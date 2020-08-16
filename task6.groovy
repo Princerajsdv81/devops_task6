@@ -11,7 +11,7 @@ job("Pull from GitHub") {
 
   steps {
     shell('''
-    sudo cp -rvf * /home/groovy
+    sudo cp -rvf * /home/jenkins_groovy
     ''')
   }
 }
