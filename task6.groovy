@@ -57,7 +57,6 @@ buildPipelineView("devops_task6") {
   selectedJob("Pull from GitHub")
   displayedBuilds(1)
   refreshFrequency(4)
-  alwaysAllowManualTrigger()
-  showPipelineParameters()
-  refreshFrequency(1)
+  alwaysAllowManualTrigger(false)
+  showPipelineParameters(true)
 }
