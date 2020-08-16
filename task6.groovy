@@ -10,10 +10,17 @@ job("Github_job1") {
   }
 
   steps {
-    shell('''
-    sudo cp -rvf * /jenkins_groovy
-    ''')
+    dockerBuildAndPublish {
+      repositoryName('vimal13/webserver')
+      tag("latest")
+      dockerHostURI('tcp://0.0.0.0:4243')
+      registryCredentials('docker-hub')
+      createFingerprints(false)
+      skipDecorate(false)
+      skipTagAsLatest(true)
+    }
   }
+
 }
 
 job("Deploy_job2") {
