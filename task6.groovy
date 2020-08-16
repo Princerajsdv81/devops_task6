@@ -36,7 +36,7 @@ job("Test job") {
   }
 
   steps {
-    shell(readFileFromWorkspace("test_app.sh"))
+    shell(readFileFromWorkspace("test_application.sh"))
   }
 }
 
