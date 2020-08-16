@@ -10,7 +10,6 @@ job("Github_job1") {
   }
 
   steps {
-    dockerBuildAndPublish {
       repositoryName('vimal13/webserver')
       tag("latest")
       dockerHostURI('tcp://0.0.0.0:4243')
@@ -18,7 +17,6 @@ job("Github_job1") {
       createFingerprints(false)
       skipDecorate(false)
       skipTagAsLatest(true)
-    }
   }
 
 }
