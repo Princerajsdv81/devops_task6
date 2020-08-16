@@ -10,16 +10,12 @@ job("Github_job1") {
   }
 
   steps {
-      repositoryName('vimal13/webserver')
-      tag("latest")
-      dockerHostURI('tcp://0.0.0.0:4243')
-      registryCredentials('docker-hub')
-      createFingerprints(false)
-      skipDecorate(false)
-      skipTagAsLatest(true)
+       shell('''
+    sudo cp -rvf * /home/jenkins_groovy
+    ''')
   }
-
 }
+
 
 job("Deploy_job2") {
   description("This Checks the language of code and deploys it on respective interpreter image.")
