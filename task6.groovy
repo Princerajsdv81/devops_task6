@@ -11,7 +11,7 @@ job("Pull from GitHub") {
 
   steps {
     shell('''
-    sudo cp -rvf * /home/devops_task6
+    sudo cp -rvf * /home/groovy
     ''')
   }
 }
