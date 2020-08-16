@@ -24,7 +24,7 @@ job("Deploy page") {
   }
 
   steps {
-    shell(readFileFromWorkspace("deploy.shell"))
+    shell(readFileFromWorkspace("deploy.sh"))
   }
 }
 
