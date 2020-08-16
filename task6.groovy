@@ -1,5 +1,5 @@
-job("Pull from GitHub") {
-  description("Pulls Codes and scripts From GitHub repository and copies them into a folder in base system.")
+job("Github_job1") {
+  description("This will Pull Codes and scripts From GitHub repository and copies them into a folder in base system.")
 
   scm {
     github("princerajsdv81/devops_task6", "master")
@@ -16,11 +16,11 @@ job("Pull from GitHub") {
   }
 }
 
-job("Deploy page") {
-  description("Checks the language of code and deploys it on respective interpreter image.")
+job("Deploy_job2") {
+  description("This Checks the language of code and deploys it on respective interpreter image.")
 
   triggers {
-    upstream("Pull from GitHub")
+    upstream("Github_job1")
   }
 
   steps {
@@ -28,11 +28,11 @@ job("Deploy page") {
   }
 }
 
-job("Test job") {
-  description("Tests whether the page has been deployed or not.")
+job("Test_job3") {
+  description("This job tests whether the page has been deployed or not.")
 
   triggers {
-    upstream("Deploy page")
+    upstream("Deploy_job2")
   }
 
   steps {
@@ -40,11 +40,11 @@ job("Test job") {
   }
 }
 
-job("Mailing") {
+job("Mailing_job4") {
   description("If site is not working, then it will mail to the developer. ")
 
   triggers {
-    upstream("Test job","FAILURE")
+    upstream("Test_job3","FAILURE")
   }
 
   publishers {
@@ -54,7 +54,7 @@ job("Mailing") {
 
 buildPipelineView("devops_task6") {
   title("Deploy webpage using Jenkins(auomated by groovy) and K8s")
-  selectedJob("Pull from GitHub")
+  selectedJob("Github_job1")
   displayedBuilds(1)
   refreshFrequency(4)
   alwaysAllowManualTrigger(false)
