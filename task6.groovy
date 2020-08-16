@@ -11,7 +11,7 @@ job("Github_job1") {
 
   steps {
     shell('''
-    sudo cp -rvf * /home/Task6_groovy_seed_job
+    sudo cp -rvf * /home/groovy
     ''')
   }
 }
