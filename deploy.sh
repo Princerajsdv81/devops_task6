@@ -1,7 +1,7 @@
 sudo cd /root/jenkins_groovy
 sudo ls
 command = """
-export len1=\$(ls -l /var/lib/jenkins/workspace/deploy_job2 | grep html )
+export len1=\$(ls -l /var/lib/jenkins/workspace/deploy_job1 | grep html )
 
 if [ \$len1 -gt 0 ]
 then
