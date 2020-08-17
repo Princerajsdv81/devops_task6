@@ -1,15 +1,15 @@
 sudo cd /root/jenkins_groovy
 sudo ls
-if sudo kubectl get all|grep webdeploy
+if [ \$len1 -gt 0 ]
 then
-sudo kubectl delete all --all
-sudo kubectl delete pvc --all
-sudo kubectl create -f /root/jenkins_groovy/webdeploy.yml
-sleep 10
-sudo kubectl get all
-else
-sudo kubectl create -f /root/jenkins_groovy/webdeploy.yml
-sleep 10
-sudo kubectl get all
+	export len2=\$(sudo kubectl get deployments | grep webserver | wc -l)
+	if [ \$len2 -gt 0 ]
+	then
+		sudo kubectl rollout restart deployment/webserver
+		sudo kubectl rollout status deployment/webserver
+  else
+		sudo kubectl create deployment webserver --image=prince12/httpd-server:latest
+		sudo kubectl scale deployment webserver --replicas=3
+		sudo kubectl expose deployment webserver --port 80 --type NodePort
+	fi
 fi
-sudo kubectl cp /root/jenkins_groovy/index.html $(sudo kubectl get pod|grep webdeploy| awk '{print $1}'):/var/www/html
